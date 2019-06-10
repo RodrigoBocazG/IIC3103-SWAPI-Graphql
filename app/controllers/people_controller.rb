@@ -33,6 +33,6 @@ class PeopleController < ApplicationController
 
   def show
     data = query PersonQuery, id: params[:people_id]
-    @person = data.film
+    @character = data.person
   end
 end

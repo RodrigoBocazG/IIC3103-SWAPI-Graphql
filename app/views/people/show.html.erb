@@ -1,2 +1,35 @@
-<h1>People#show</h1>
-<p>Find me in app/views/people/show.html.erb</p>
+<h1>
+  <%= "#{@character.name}" %>
+</h1>
+<ul id='planet_info'>
+  <li><%= "Birth year: #{@character.birth_year}" %></li>
+  <li><%= "Eye color: #{@character.eye_color}" %></li>
+  <li><%= "Gender: #{@character.gender}" %></li>
+  <li><%= "Hair color: #{@character.hair_color}" %></li>
+  <li><%= "Height: #{@character.height}" %></li>
+  <li><%= "Mass: #{@character.mass}" %></li>
+  <li><%= "Skin color: #{@character.skin_color}" %></li>
+  <li>Homeworld: <%= link_to("#{@character.homeworld.name}", planet_show_path(@character.homeworld.id)) %></li>
+</ul>
+<div class="characters_table">
+  <div class="characters_table_container">
+    <h3>Films</h3>
+    <ul>
+      <% @character.film_connection.films.each do |film|%>
+        <li>
+          <%= link_to("#{film.title}", movie_show_path(film.id)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="characters_table_container">
+    <h3>Starships</h3>
+    <ul>
+      <% @character.starship_connection.starships.each do |starship|%>
+        <li>
+          <%= link_to("#{starship.name}", starship_show_path(starship.id)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
