@@ -22,6 +22,7 @@
           </ul>
         </td>
         <td><%= movie.episode_id %></td>
+        <td><%= link_to "See more", movie_show_path(movie.id) %></td>
       </tr>
     <% end %>
   </tbody>
