@@ -14,7 +14,13 @@
         <td><%= movie.title %></td>
         <td><%= movie.release_date %></td>
         <td><%= movie.director %></td>
-        <td><%= movie.producers %></td>
+        <td>
+          <ul>
+            <% movie.producers.each do |producer| %>
+              <li><%= "#{producer}" %></li>
+            <% end %>
+          </ul>
+        </td>
         <td><%= movie.episode_id %></td>
       </tr>
     <% end %>
