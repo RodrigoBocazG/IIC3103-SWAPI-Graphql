@@ -1,2 +1,35 @@
-<h1>Planet#show</h1>
-<p>Find me in app/views/planet/show.html.erb</p>
+<h1>
+  <%= "#{@planet.name}" %>
+</h1>
+<ul id='planet_info'>
+  <li><%= "Diameter: #{@planet.diameter}" %></li>
+  <li><%= "Rotation period: #{@planet.rotation_period}" %></li>
+  <li><%= "Orbital period: #{@planet.orbital_period}" %></li>
+  <li><%= "Gravity: #{@planet.gravity}" %></li>
+  <li><%= "Population: #{@planet.population}" %></li>
+  <li><%= "Climate: #{@planet.climates}" %></li>
+  <li><%= "Terrain: #{@planet.terrains}" %></li>
+  <li><%= "Surface water: #{@planet.surface_water}" %></li>
+</ul>
+<div class="planet_table">
+  <div class="planet_table_container">
+    <h3>Residents</h3>
+    <ul>
+      <% @planet.resident_connection.residents.each do |resident|%>
+        <li>
+          <%= link_to("#{resident.name}", people_show_path(resident.id)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="planet_table_container">
+    <h3>Films</h3>
+    <ul>
+      <% @planet.film_connection.films.each do |film|%>
+        <li>
+          <%= link_to("#{film.title}", movie_show_path(film.id)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
