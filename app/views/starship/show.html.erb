@@ -1,2 +1,39 @@
-<h1>Starship#show</h1>
-<p>Find me in app/views/starship/show.html.erb</p>
+<h1>
+  <%= "#{@starship.name}" %>
+</h1>
+<ul id='starship_info'>
+  <li><%= "Model: #{@starship.model}" %></li>
+  <li><%= "Manufacturer: #{@starship.manufacturers}" %></li>
+  <li><%= "Cost in credits: #{@starship.cost_in_credits}" %></li>
+  <li><%= "Length: #{@starship.length}" %></li>
+  <li><%= "Crew: #{@starship.crew}" %></li>
+  <li><%= "Passengers: #{@starship.passengers}" %></li>
+  <li><%= "Max atmosphering speed: #{@starship.max_atmosphering_speed}" %></li>
+  <li><%= "MGLT: #{@starship.mglt}" %></li>
+  <li><%= "Cargo capacity: #{@starship.cargo_capacity}" %></li>
+  <li><%= "Consumables: #{@starship.consumables}" %></li>
+  <li><%= "Hyperdrive rating: #{@starship.hyperdrive_rating}" %></li>
+  <li><%= "Starship class: #{@starship.starship_class}" %></li>
+</ul>
+<div class="starship_table">
+  <div class="starship_table_container">
+    <h3>Films</h3>
+    <ul>
+      <% @starship.film_connection.films.each do |film|%>
+        <li>
+          <%= link_to("#{film.title}", movie_show_path(film.id)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="starship_table_container">
+    <h3>Pilots</h3>
+    <ul>
+      <% @starship.pilot_connection.pilots.each do |pilot|%>
+        <li>
+          <%= link_to("#{pilot.name}", people_show_path(pilot.id)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
